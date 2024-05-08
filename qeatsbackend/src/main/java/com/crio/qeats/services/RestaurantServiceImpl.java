@@ -57,7 +57,6 @@ public class RestaurantServiceImpl implements RestaurantService {
    */   List<Restaurant> listOfRestaurants=new ArrayList<>();
         double latitude=getRestaurantsRequest.getLatitude();
         double longitude=getRestaurantsRequest.getLongitude();
-        LocalTime time = currentTime;
         Double servingRadiusInKms;
         int h = currentTime.getHour();
         int m = currentTime.getMinute();
