@@ -71,7 +71,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 @ActiveProfiles("test")
 public class RestaurantControllerTest {
 
-  //FIXME: REVIEW the api names
   private static final String RESTAURANT_API_URI = RESTAURANT_API_ENDPOINT + RESTAURANTS_API;
   private static final String MENU_API_URI = RESTAURANT_API_ENDPOINT + MENU_API;
   private static final String CART_API_URI = RESTAURANT_API_ENDPOINT + CART_API;
@@ -108,9 +107,9 @@ public class RestaurantControllerTest {
         .fromPath(RESTAURANT_API_URI)
         .queryParam("latitude", "91")
         .queryParam("longitude", "20")
-        .build().toUri(); //endpoint
+        .build().toUri();
 
-    assertEquals(RESTAURANT_API_URI + "?latitude=91&longitude=20", uri.toString());  //requestmapping error
+    assertEquals(RESTAURANT_API_URI + "?latitude=91&longitude=20", uri.toString());
 
     MockHttpServletResponse response = mvc.perform(
         get(uri.toString()).accept(APPLICATION_JSON_UTF8)
@@ -133,7 +132,6 @@ public class RestaurantControllerTest {
     assertEquals(HttpStatus.BAD_REQUEST.value(), response.getStatus());
   }
 
-  //-90 TO 90 latitude
   @Test
   public void invalidLongitudeResultsInBadHttpRequest() throws Exception {
     URI uri = UriComponentsBuilder
@@ -159,7 +157,6 @@ public class RestaurantControllerTest {
 
     assertEquals(RESTAURANT_API_URI + "?latitude=10&longitude=-181", uri.toString());
 
-    // calling api with invalid longitude
     response = mvc.perform(
         get(uri.toString()).accept(APPLICATION_JSON_UTF8)
     ).andReturn().getResponse();
